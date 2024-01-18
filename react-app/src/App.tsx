@@ -2,8 +2,11 @@ import Alert from "./components/Alert";
 import ListGroup from "./components/ListGroup";
 import Button from "./components/Button";
 
+import { useState } from "react";
+
 function App() {
   let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
+  const [alertVisible, setAlertVisibility] = useState(false);
 
   //this is a simple function that will print the item to the console
   const handleSelectItem = (item: string) => {
@@ -11,7 +14,7 @@ function App() {
   };
 
   const handleOnClick = () => {
-    console.log("you clicked me!");
+    setAlertVisibility(true);
   };
 
   return (
@@ -22,9 +25,11 @@ function App() {
         onSelectItem={handleSelectItem}
       />
 
-      <Alert>
-        hello <span>world</span>
-      </Alert>
+      {alertVisible && (
+        <Alert onClose={() => setAlertVisibility(false)}>
+          hello <span>world</span>
+        </Alert>
+      )}
 
       <Button onCLick={handleOnClick}>Click on me!</Button>
     </div>
