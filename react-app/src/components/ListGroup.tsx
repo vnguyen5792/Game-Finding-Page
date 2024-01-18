@@ -1,13 +1,15 @@
 //import { MouseEvent } from "react";
 
+//this is our props object
 interface ListGroupProps {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void;
 }
 
 import { useState } from "react";
 
-function ListGroup({ items, heading }: ListGroupProps) {
+function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
   //Hook function
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
@@ -31,6 +33,7 @@ function ListGroup({ items, heading }: ListGroupProps) {
             key={item}
             onClick={() => {
               setSelectedIndex(index);
+              onSelectItem(item);
             }}
           >
             {item}
