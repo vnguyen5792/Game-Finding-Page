@@ -1,10 +1,13 @@
 //import { MouseEvent } from "react";
 
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+}
+
 import { useState } from "react";
 
-function ListGroup() {
-  let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
-
+function ListGroup({ items, heading }: ListGroupProps) {
   //Hook function
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
@@ -13,7 +16,7 @@ function ListGroup() {
 
   return (
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
 
       {/* this lets you use condition statements to have different elements */}
       {items.length === 0 && <p>No item found</p>}
